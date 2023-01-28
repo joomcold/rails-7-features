@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  # PostgreSQL
+  pg_db:
+    container_name: postgres14
+    image: postgres:14
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - pg_site
+  # Redis
+  redis:
+    container_name: redis6
+    image: redis:6.2-alpine
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server
+
+networks:
+  pg_site:
+
+volumes:
+  pg_data:
