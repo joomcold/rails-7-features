@@ -53,6 +53,8 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
+  # Enable async query with a common thread pool
+  config.active_record.async_query_executor = :global_thread_pool
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

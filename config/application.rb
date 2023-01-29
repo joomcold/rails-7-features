@@ -35,5 +35,10 @@ module Rails7Features
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # Load path without compact style
+    config.autoload_paths += Dir[Rails.root.join('app', 'jobs', '**/')]
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', '**/')]
+    config.autoload_paths += Dir[Rails.root.join('app', 'mailers', '**/')]
   end
 end
